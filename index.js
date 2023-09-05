@@ -9,8 +9,9 @@ const dailyQuotes = document.querySelector(".quotes");
 const todayHighlightsBtn = document.getElementById("highlights")
 const hourlyBtn = document.getElementById("hourly")
 const forecastBtn = document.getElementById("forecast")
-const todoListBtn = document.getElementById("todo")
+const todoListBtn = document.getElementById("todo");
 const weatherInfoContainer = document.getElementById("weather-info")
+
 
 // a list of weather motivational quotes to put depending on the current city weather and motivation quotes incase we don't match the cities weather
 const weatherMotivationQuotes = [
@@ -495,6 +496,106 @@ forecastBtn.addEventListener("click", () => {
     isForecastCreated = true;
 }
 });
+
+// todo list 
+// form for task list
+
+let isTodoCreated = false;
+
+todoListBtn.addEventListener("click", () => {
+  // Check if a todo container is already created
+  if (!isTodoCreated) {
+    const todoContainer = document.createElement("div");
+    todoContainer.classList.add("container-todo");
+
+    const todoHeader = document.createElement("header");
+    const todoTitle = document.createElement("h1");
+    todoTitle.id = "title";
+    todoTitle.textContent = "Daily Task ✎";
+
+    const formTodo = document.createElement("form");
+    formTodo.classList.add("task-form");
+
+    const inputTodo = document.createElement("input");
+    inputTodo.type = "text";
+    inputTodo.id = "task-added";
+    inputTodo.placeholder = "Enter your task";
+    inputTodo.value = "";
+
+    const btnTodo = document.createElement("button");
+    btnTodo.classList.add("add-list-btn");
+    btnTodo.textContent = "Add Task";
+
+    const ulTodo = document.createElement("ul");
+    ulTodo.id = "task-list";
+
+    todoHeader.appendChild(todoTitle);
+    formTodo.appendChild(inputTodo);
+    formTodo.appendChild(btnTodo);
+
+    todoContainer.appendChild(todoHeader);
+    todoContainer.appendChild(formTodo);
+    todoContainer.appendChild(ulTodo);
+    
+    weatherInfoContainer.appendChild(todoContainer);
+    isTodoCreated = true;
+
+    formTodo.addEventListener("submit", (e) => {
+      // Prevents it from submitting the form (not refreshing the page)
+      e.preventDefault();
+      // Creating a variable called "task" to be equal to the value of the input
+      const taskText = inputTodo.value;
+      // Checking if there is something in the input
+      if (taskText !== "") {
+        // Create a new li element
+        const newLiElement = document.createElement("li");
+        // Adding a class name to our newly created li tag so we can style it later with CSS
+        newLiElement.classList.add("task");
+        // Creating a span element before the "task"
+        const startSpanElement = document.createElement("span");
+        // Adding the class name to our newly created span tag
+        startSpanElement.classList.add("complete");
+        // Setting the text content to a square
+        startSpanElement.textContent = "☐ ";
+        // Setting the li text content to the input value
+        const taskTextContent = document.createElement("span");
+        taskTextContent.textContent = taskText;
+        // When checked, change the text content to a checked box and cross the word
+        startSpanElement.addEventListener("click", () => {
+          if (startSpanElement.textContent === "☐ ") {
+            // Adding the checkbox and line through
+            startSpanElement.textContent = "☑ ";
+            taskTextContent.style.textDecorationLine = "line-through";
+          } else {
+            // Removing the checkbox and line through
+            startSpanElement.textContent = "☐ ";
+            taskTextContent.style.textDecorationLine = "";
+          }
+        });
+        // Creating the end span element
+        const endSpanElement = document.createElement("span");
+        // Adding class name to our end span element
+        endSpanElement.classList.add("exit");
+        // Setting the text content to the "x"
+        endSpanElement.textContent = "✗";
+        // Delete the Li when you click the X
+        endSpanElement.addEventListener("click", () => {
+          newLiElement.remove();
+        });
+        // Applying the span elements to the "li"
+        newLiElement.appendChild(startSpanElement);
+        newLiElement.appendChild(taskTextContent);
+        newLiElement.appendChild(endSpanElement);
+        // Putting the li in the ul
+        ulTodo.appendChild(newLiElement);
+        // Setting the input value to blank
+        inputTodo.value = "";
+      }
+    });
+  }
+});
+
+
 
 
 // Function to update hourly weather data
