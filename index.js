@@ -248,7 +248,6 @@ async function updateHourlyWeather(cityName, apiKey, currentWeather) {
 	const data = await response.json();
 	const hourlyData = data.list.slice(2, 8);
 
-	// Update the 'Now' section
 	const nowContainer = document.querySelector(".h-container.now");
 	const currentTemperature = Math.round(
 		((currentWeather.main.temp - 273.15) * 9) / 5 + 32
@@ -263,7 +262,6 @@ async function updateHourlyWeather(cityName, apiKey, currentWeather) {
 	nowContainer.querySelector(".weather").alt = currentWeatherType;
 	nowContainer.querySelector(".deg").textContent = `${currentTemperature}°`;
 
-	// Update the future hourly data
 	const timeContainers = document.querySelectorAll(".h-container:not(.now)");
 
 	timeContainers.forEach((container, index) => {
