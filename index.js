@@ -2,6 +2,9 @@
     Making a weather app, getting API
 
 */
+const weather_api_key = "df1fd18342690d43086da43326902da5";
+const searchBtn = document.querySelector("#search-btn");
+const searchInput = document.querySelector("#search");
 const dailyQuotes = document.querySelector(".quotes");
 const todayHighlightsBtn = document.getElementById("highlights")
 const hourlyBtn = document.getElementById("hourly")
@@ -414,7 +417,8 @@ hourlyBtn.addEventListener("click", () => {
     weatherInfoContainer.appendChild(hourlySection);
     // set it to true 
     isHourlyCreated = true;
-    }
+    getWeatherData(cityName, apiKey);
+  }
 })
 
 //5-day forecast
@@ -492,4 +496,87 @@ forecastBtn.addEventListener("click", () => {
 }
 });
 
-// todo list
+
+// Function to update hourly weather data
+async function updateHourlyWeather(cityName, apiKey, currentWeather) {
+	const url = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}`;
+	const response = await fetch(url);
+	const data = await response.json();
+	const hourlyData = data.list.slice(2, 8);
+
+	const nowContainer = document.querySelector(".h-container.now");
+	const currentTemperature = Math.round(
+		((currentWeather.main.temp - 273.15) * 9) / 5 + 32
+	);
+	const currentWeatherType = currentWeather.weather[0].main;
+	const currentWeatherIcon = currentWeather.weather[0].icon;
+
+	nowContainer.querySelector(".time.rn").textContent = "Now";
+	nowContainer.querySelector(
+		".weather"
+	).src = `https://openweathermap.org/img/w/${currentWeatherIcon}.png`;
+	nowContainer.querySelector(".weather").alt = currentWeatherType;
+	nowContainer.querySelector(".deg").textContent = `${currentTemperature}°`;
+
+	const timeContainers = document.querySelectorAll(".h-container:not(.now)");
+
+	timeContainers.forEach((container, index) => {
+		if (index >= hourlyData.length) return;
+
+		const forecast = hourlyData[index];
+		const temperature = Math.round(
+			((forecast.main.temp - 273.15) * 9) / 5 + 32
+		);
+		const weatherType = forecast.weather[0].main;
+		const weatherIcon = forecast.weather[0].icon;
+
+		container.querySelector(".time").textContent = `${index * 2 + 2} hours`;
+		container.querySelector(
+			".weather"
+		).src = `https://openweathermap.org/img/w/${weatherIcon}.png`;
+		container.querySelector(".weather").alt = weatherType;
+		container.querySelector(".deg").textContent = `${temperature}°`;
+	});
+}
+
+function getWeatherData(cityName, apiKey) {
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${apiKey}`;
+	fetch(url)
+		.then((response) => response.json())
+		.then((data) => {
+			const cityDiv = document.querySelector("#city");
+			const day = new Date().toLocaleDateString("en-US", { weekday: "long" });
+			const date = new Date().toLocaleDateString("en-US", {
+				month: "short",
+				day: "numeric",
+				year: "numeric",
+			});
+
+			const location = `${data.name}, ${data.sys.country}`;
+			const temperature = Math.round(((data.main.temp - 273.15) * 9) / 5 + 32);
+			const weatherType = data.weather[0].main;
+			const weatherIcon = data.weather[0].icon;
+
+			cityDiv.querySelector(".day").textContent = day;
+			cityDiv.querySelector(".date").textContent = date;
+			cityDiv.querySelector(".location").textContent = location;
+			cityDiv.querySelector(
+				".temp"
+			).innerHTML = `${temperature}&deg; <span class="degree">F</span>`;
+			cityDiv.querySelector(".weather-type").textContent = weatherType;
+			cityDiv.querySelector(
+				".weather-icon"
+			).innerHTML = `<img src="https://openweathermap.org/img/w/${weatherIcon}.png" alt="${weatherType}">`;
+
+			updateHourlyWeather(cityName, apiKey, data).catch((error) =>
+				console.error(error)
+			);
+		})
+		.catch((error) => console.error(error));
+}
+
+searchBtn.addEventListener("click", () => {
+	const cityName = searchInput.value;
+	const apiKey = weather_api_key;
+	getWeatherData(cityName, apiKey);
+});
