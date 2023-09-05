@@ -47,5 +47,5 @@ This project is open-source, and contributions are welcome. Feel free to fork th
 This project is not currently licensed.
 
 ## Contact
-
+https://jcbardellini.github.io/weather_app/
 For questions or issues related to this project, please contact [JCBardellini].
