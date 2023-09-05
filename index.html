@@ -1,59 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="todo.css">
-    <script src="/index.js" defer></script>
-    <title>Weather App</title>
-</head>
-<body>
-    <div id="weather-container">
-        <!-- nav -->
-        <header id="nav-bar">
-            <h1 class="title">Weather App</h1>
-            <form id="search-form">
-                <input type="text" name="" id="search" placeholder="Search City or Zip Code">
-                <div id="search-btn">&#128269;</div>
-            </form>
-        </header>
-        <!-- quotes -->
-        <div class="quotes">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio harum voluptatibus rerum sunt tempora libero consequuntur magnam recusandae vel tempore obcaecati hic incidunt odit, quaerat laudantium, soluta, molestiae debitis labore?</p>
-        </div>
-        <!-- main content -->
-        <div class="city-container">
-            <div id="city">
-                <div id="top-part">
-                    <h3 class="day">Tuesday</h3>
-                    <p class="date">Jan 20th, 2023</p>
-                    <p class="location"> Seattle, WA</p>
-                </div>
-                <div id="bottom-part">
-                    <div class="weather-icon">&#9788;</div>
-                    <h2 class="temp">29&deg; <span class="degree">F</span></h2>
-                    <p class="weather-type">Rainy</p>
-                </div>
-            </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="styles.css" />
+		<link rel="stylesheet" href="todo.css" />
+		<script src="/index.js" defer></script>
+		<title>Weather App</title>
+	</head>
+	<body>
+		<div id="weather-container">
+			<!-- nav -->
+			<header id="nav-bar">
+				<h1 class="title">Weather App</h1>
+				<form id="search-form">
+					<input
+						type="text"
+						name=""
+						id="search"
+						placeholder="Search City or Zip Code"
+					/>
+					<div id="search-btn">&#128269;</div>
+				</form>
+			</header>
+			<!-- quotes -->
+			<div class="quotes">
+				<p>
+					Lorem ipsum, dolor sit amet consectetur adipisicing elit. Distinctio
+					harum voluptatibus rerum sunt tempora libero consequuntur magnam
+					recusandae vel tempore obcaecati hic incidunt odit, quaerat
+					laudantium, soluta, molestiae debitis labore?
+				</p>
+			</div>
+			<!-- main content -->
+			<div class="city-container">
+				<div id="city">
+					<div id="top-part">
+						<h3 class="day">Tuesday</h3>
+						<p class="date">Jan 20th, 2023</p>
+						<p class="location">Seattle, WA</p>
+					</div>
+					<div id="bottom-part">
+						<div class="weather-icon">&#9788;</div>
+						<h2 class="temp">29&deg; <span class="degree">F</span></h2>
+						<p class="weather-type">Rainy</p>
+					</div>
+				</div>
 
-            <div id="weather-info">
-                <div class="btn">
-                    <button id="highlights">Today's Highlight</button>
-                    <button id="hourly">Hourly</button>
-                    <button id="forecast">5 day Forecast</button>
-                    <button id="todo">Todo List</button>
-                </div>
+				<div id="weather-info">
+					<div class="btn">
+						<button id="highlights">Today's Highlight</button>
+						<button id="hourly">Hourly</button>
+						<button id="forecast">5 day Forecast</button>
+						<button id="todo">Todo List</button>
+					</div>
 
-                <!-- todo -->
-                <!-- <div class="container">
+					<!-- todo -->
+					<!-- <div class="container">
                     <header>
                         <h1 id="title">Daily Task &#9998;</h1>
                     </header>
                     <form class="task-form"> -->
-                        <!-- Add new task -->
-                        <!-- <input type="text" id="task-added" value="" placeholder="' need to study for javascript '">
+					<!-- Add new task -->
+					<!-- <input type="text" id="task-added" value="" placeholder="' need to study for javascript '">
                         <button class="add-list-btn">add task</button>
                     </form>
                     <ul id="task-list">
@@ -61,9 +71,9 @@
                     </ul>
                 </div> -->
 
-                <!-- 5 day forecast -->
+					<!-- 5 day forecast -->
 
-                <!-- <section id="day-container">
+					<!-- <section id="day-container">
                                     <h3 class="d-title">5-day Forecast</h3>
                                     <div id="days">
                                         <div class="d-container now">
@@ -104,52 +114,83 @@
                                     </div>
                                 </section> -->
 
-                <!-- hourly section -->
+					<!-- hourly section -->
 
-                <section id="hourly-container">
-                    <h3 class="hourly-title">Hourly</h3>
-                    <div id="time">
-                        <div class="h-container now">
-                            <ul class="h-ul">
-                                <li class="time rn">Now</li>
-                                <li><img src="/weather-icons/weather/clear-sky.png" alt="" srcset="" class="weather"></li>
-                                <li class="deg">65&deg;</li>
-                            </ul>
-                        </div>
-                        <div class="h-container one">
-                            <ul class="h-ul">
-                                <li class="time two-hours">2 hours</li>
-                                <li><img src="/weather-icons/weather/rain.png" alt="" class="weather"></li>
-                                <li class="deg">68&deg;</li> 
-                            </ul>
-                        </div>
-                        <div class="h-container two">
-                            <ul class="h-ul">
-                                <li class="time four-hours">4 hours</li>
-                                <li><img src="/weather-icons/weather/rainy.png" alt="" class="weather"></li>
-                                <li class="deg">55&deg;</li>
-                            </ul>
-                        </div>
-                        <div class="h-container three">
-                            <ul class="h-ul">
-                                <li class="time six-hours">6 hours</li>
-                                <li><img src="/weather-icons/weather/snow.png" alt="" class="weather"></li>
-                                <li class="deg">45&deg;</li>
-                            </ul>
-                        </div>
-                        <div class="h-container four">
-                            <ul class="h-ul">
-                                <li class="time eight-hours">8 hours</li>
-                                <li><img src="/weather-icons/weather/sunny.png" alt="" class="weather"></li>
-                                <li class="deg">70&deg;</li>
-                            </ul>
-                        </div>
-                    </div>
-                </section>
-                
-                <!-- highlights-container section -->
+					<section id="hourly-container">
+						<h3 class="hourly-title">Hourly</h3>
+						<div id="time">
+							<div class="h-container now">
+								<ul class="h-ul">
+									<li class="time rn">Now</li>
+									<li>
+										<img
+											src="/weather-icons/weather/clear-sky.png"
+											alt=""
+											srcset=""
+											class="weather"
+										/>
+									</li>
+									<li class="deg">65&deg;</li>
+								</ul>
+							</div>
+							<div class="h-container one">
+								<ul class="h-ul">
+									<li class="time two-hours">2 hours</li>
+									<li>
+										<img
+											src="/weather-icons/weather/rain.png"
+											alt=""
+											class="weather"
+										/>
+									</li>
+									<li class="deg">68&deg;</li>
+								</ul>
+							</div>
+							<div class="h-container two">
+								<ul class="h-ul">
+									<li class="time four-hours">4 hours</li>
+									<li>
+										<img
+											src="/weather-icons/weather/rainy.png"
+											alt=""
+											class="weather"
+										/>
+									</li>
+									<li class="deg">55&deg;</li>
+								</ul>
+							</div>
+							<div class="h-container three">
+								<ul class="h-ul">
+									<li class="time six-hours">6 hours</li>
+									<li>
+										<img
+											src="/weather-icons/weather/snow.png"
+											alt=""
+											class="weather"
+										/>
+									</li>
+									<li class="deg">45&deg;</li>
+								</ul>
+							</div>
+							<div class="h-container four">
+								<ul class="h-ul">
+									<li class="time eight-hours">8 hours</li>
+									<li>
+										<img
+											src="/weather-icons/weather/sunny.png"
+											alt=""
+											class="weather"
+										/>
+									</li>
+									<li class="deg">70&deg;</li>
+								</ul>
+							</div>
+						</div>
+					</section>
 
-                <!-- <section id="highlights-container">
+					<!-- highlights-container section -->
+
+					<!-- <section id="highlights-container">
                     <h3 class="title-highlights">Today's highlights</h3>
                     <div id="air-quality">
                         <h4 class="h-title">Air Quality</h4>
@@ -219,11 +260,10 @@
                         </ul>
                     </div>
                 </section> -->
-                
-            </div>
-        </div>
-    </div>
+				</div>
+			</div>
+		</div>
 
-    <!-- <script src="/todo.js"></script> -->
-</body>
+		<!-- <script src="/todo.js"></script> -->
+	</body>
 </html>
