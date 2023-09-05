@@ -117,15 +117,15 @@ todayHighlightsBtn.addEventListener("click", () => {
         // appending the aqListUl into the aqRating div 
         aqRating.appendChild(aqListUl);
         // create a new div called pRating that will hold the pollutants
-        const pRatingContainer = createElement("div");
+        const pRatingContainer = document.createElement("div");
         pRatingContainer.classList.add('p-rating');
         // creating the title and adding text to it
-        const pTitle = createElement("h5");
+        const pTitle = document.createElement("h5");
         pTitle.classList.add("pollutants");
         pTitle.textContent = "Pollutants";
         // creating the ul for the different pollutants
-        const pListUl = createElement("ul");
-        pListUl.classList.add("ul-highlight p-info");
+        const pListUl = document.createElement("ul");
+        pListUl.classList.add("ul-highlight", "p-info");
         // adding the li to it
         const pollutantO3 = document.createElement("li");
         pollutantO3.classList.add("highlights-info");
@@ -194,15 +194,162 @@ todayHighlightsBtn.addEventListener("click", () => {
         sunriseUlList.appendChild(sunriseInfo);
 
         sunriseDiv.appendChild(sunriseUlList);
-
-
-
         //sunset container
-        
+        const sunsetDiv = document.createElement("div");
+        sunriseDiv.classList.add("sunset");
+
+        const sunsetTitle = document.createElement("h5");
+        sunsetTitle.textContent = "Sunset"
+
+        const sunsetUlList = document.createElement("ul");
+        sunsetUlList.classList.add("ul-highlight");
+
+        const sunsetIcon = document.createElement("li");
+        sunsetIcon.classList.add("icons");
+
+        const sunsetIconImg = document.createElement("img");
+        sunsetIconImg.src = "/weather-icons/sunset.png";
+        sunsetIconImg.alt = "";
+        sunsetIcon.appendChild(sunsetIconImg);
+
+        const sunsetInfo = document.createElement("li");
+        sunsetInfo.classList.add("highlights-info", "s-set");
+        sunsetInfo.textContent = "7:32 PM";
+
+        sunsetUlList.appendChild(sunsetIcon);
+        sunsetUlList.appendChild(sunsetInfo);
+
+        sunsetDiv.appendChild(sunsetUlList);
 
         sunriseSunsetContainer.appendChild(sunriseDiv);
-        sunriseSunsetContainer.appendChild(sunriseDiv);
+        sunriseSunsetContainer.appendChild(sunsetDiv);
+
+        sunRiseSunSet.appendChild(sSTitle);
+        sunRiseSunSet.appendChild(sunriseSunsetContainer);
         
+        // humidity section
+        const humidityDiv = document.createElement("div");
+        humidityDiv.id = "humidity";
+
+        const humidityTitle = document.createElement("h4");
+        humidityTitle.classList.add("h-title");
+        humidityTitle.textContent = "Humidity";
+
+        const humidityUlList = document.createElement("ul");
+        humidityUlList.classList.add("ul-highlight");
+
+        const humidityIcon = document.createElement("li");
+        humidityIcon.classList.add("icons");
+        const humidityIconImg = document.createElement("img");
+        humidityIconImg.src = "/weather-icons/humidity.png";
+        humidityIconImg.alt = "humidity-icon";
+        humidityIcon.appendChild(humidityIconImg);
+
+        const humidityInfo = document.createElement("li");
+        humidityInfo.classList.add("h-info", "highlights-info");
+        humidityInfo.textContent = "88%";
+
+        humidityUlList.appendChild(humidityIcon);
+        humidityUlList.appendChild(humidityInfo);
+
+        humidityDiv.appendChild(humidityTitle);
+        humidityDiv.appendChild(humidityUlList);
+
+        //Pressure 
+        const pressureDiv = document.createElement("div");
+        pressureDiv.id = "pressure";
+
+        const pressureTitle = document.createElement("h4");
+        pressureTitle.classList.add("h-title");
+        pressureTitle.textContent = "Pressure";
+
+        const pressureUlList = document.createElement("ul");
+        pressureUlList.classList.add("ul-highlight");
+
+        const pressureIcon = document.createElement("li");
+        pressureIcon.classList.add("icons");
+        const pressureIconImg = document.createElement("img");
+        pressureIconImg.src = "/weather-icons/pressure.png";
+        pressureIconImg.alt = "pressure-icon";
+        pressureIcon.appendChild(pressureIconImg);
+
+        const pressureInfo = document.createElement("li");
+        pressureInfo.classList.add("p-info", "highlights-info");
+        pressureInfo.textContent = "30.03 inHg";
+
+        pressureUlList.appendChild(pressureIcon);
+        pressureUlList.appendChild(pressureInfo);
+
+        pressureDiv.appendChild(pressureTitle);
+        pressureDiv.appendChild(pressureUlList);
+
+        // visibility
+        const visibilityDiv = document.createElement("div");
+        visibilityDiv.id = "visibility";
+
+        const visibilityTitle = document.createElement("h4");
+        visibilityTitle.classList.add("h-title");
+        visibilityTitle.textContent = "Visibility";
+
+        const visibilityUlList = document.createElement("ul");
+        visibilityUlList.classList.add("ul-highlight");
+
+        const visibilityIcon = document.createElement("li");
+        visibilityIcon.classList.add("icons");
+        const visibilityIconImg = document.createElement("img");
+        visibilityIconImg.src = "/weather-icons/visibility.png";
+        visibilityIconImg.alt = "visibility-icon";
+        visibilityIcon.appendChild(visibilityIconImg);
+
+        const visibilityInfo = document.createElement("li");
+        visibilityInfo.classList.add("v-info", "highlights-info");
+        visibilityInfo.textContent = "9 mi";
+
+        visibilityUlList.appendChild(visibilityIcon);
+        visibilityUlList.appendChild(visibilityInfo);
+
+        visibilityDiv.appendChild(visibilityTitle);
+        visibilityDiv.appendChild(visibilityUlList);
+        
+        // feels like 
+        const feelsLikeDiv = document.createElement("div");
+        feelsLikeDiv.id = "feels-like";
+
+        const feelsLikeTitle = document.createElement("h4");
+        feelsLikeTitle.classList.add("h-title");
+        feelsLikeTitle.textContent = "Feels Like";
+
+        const feelsLikeUlList = document.createElement("ul");
+        feelsLikeUlList.classList.add("ul-highlight");
+
+        const feelsLikeIcon = document.createElement("li");
+        feelsLikeIcon.classList.add("icons");
+        const feelsLikeIconImg = document.createElement("img");
+        feelsLikeIconImg.src = "/weather-icons/thermometer.png";
+        feelsLikeIconImg.alt = "feels-Like-icon";
+        feelsLikeIcon.appendChild(feelsLikeIconImg);
+
+        const feelsLikeInfo = document.createElement("li");
+        feelsLikeInfo.classList.add("t-info", "highlights-info");
+        feelsLikeInfo.textContent = "65°";
+
+        feelsLikeUlList.appendChild(feelsLikeIcon);
+        feelsLikeUlList.appendChild(feelsLikeInfo);
+
+        feelsLikeDiv.appendChild(feelsLikeTitle);
+        feelsLikeDiv.appendChild(feelsLikeUlList);
+
+        highlightsSection.appendChild(highlightTitle);
+        highlightsSection.appendChild(airQualityContainer);
+        highlightsSection.appendChild(sunRiseSunSet);
+        highlightsSection.appendChild(humidityDiv);
+        highlightsSection.appendChild(pressureDiv);
+        highlightsSection.appendChild(visibilityDiv);
+        highlightsSection.appendChild(feelsLikeDiv);
+        
+        weatherInfoContainer.appendChild(highlightsSection);
+
+        isHighlightCreated = true;
     }
 });
 
